@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <style>
+    body { 
+      font-family: system-ui; 
+      text-align: center; 
+      padding: 50px; 
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="message">Preparing redirect...</h1>
+
+  <script>
+    // ТВОИ ССЫЛКИ — меняешь только здесь
+    const links = [
+      "https://offer1.com",
+      "https://offer2.com", 
+      "https://offer3.com"
+    ];
+
+    const delaySeconds = 3;
+    
+    function pickRandomLink() {
+      return links[Math.floor(Math.random() * links.length)];
+    }
+
+    const targetUrl = pickRandomLink();
+    let remaining = delaySeconds;
+    const messageEl = document.getElementById("message");
+
+    function updateMessage() {
+      messageEl.innerHTML = `Redirecting to<br><strong>${new URL(targetUrl).hostname}</strong><br>in <span style="font-size:2em;color:#e74c3c">${remaining}</span> sec...`;
+    }
+
+    updateMessage();
+    
+    const interval = setInterval(() => {
+      remaining--;
+      if (remaining > 0) {
+        updateMessage();
+      } else {
+        clearInterval(interval);
+        window.location.href = targetUrl;
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
