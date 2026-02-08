@@ -265,49 +265,6 @@
             text-decoration: underline;
         }
         
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .modal h2 {
-            color: #ff0000;
-            margin-bottom: 20px;
-        }
-        
-        .modal p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        
-        .close-modal {
-            background: #ff0000;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        
         @media (max-width: 768px) {
             .container {
                 padding: 35px 25px;
@@ -464,9 +421,9 @@
             </div>
             
             <div class="footer-links">
-                <a href="#" id="termsLink">Terms of Service</a>
-                <a href="#" id="privacyLink">Privacy Policy</a>
-                <a href="#" id="copyrightLink">Copyright Policy</a>
+                <a href="javascript:void(0)" onclick="showTerms()">Terms of Service</a>
+                <a href="javascript:void(0)" onclick="showPrivacy()">Privacy Policy</a>
+                <a href="javascript:void(0)" onclick="showCopyright()">Copyright Policy</a>
             </div>
             
             <div class="copyright">
@@ -474,240 +431,140 @@
             </div>
         </div>
     </div>
-    
-    <!-- Modal for Terms of Service -->
-    <div class="modal" id="termsModal">
-        <div class="modal-content">
-            <h2><i class="fab fa-youtube"></i> YouTube Terms of Service</h2>
-            <p>These Terms of Service ("Terms") govern your access to and use of YouTube's services, including our websites, apps, and features.</p>
-            
-            <p><strong>1. Service Provider</strong><br>
-            YouTube is a service provided by Google LLC, located at 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.</p>
-            
-            <p><strong>2. Your Relationship with YouTube</strong><br>
-            Your use of YouTube's services is subject to these Terms, which form a legally binding agreement between you and YouTube.</p>
-            
-            <p><strong>3. Acceptable Use</strong><br>
-            You may use our services only as permitted by these Terms and applicable laws. You are responsible for all activity on your account.</p>
-            
-            <p><strong>4. Content on YouTube</strong><br>
-            You retain ownership rights in your content. By uploading content to YouTube, you grant YouTube a worldwide, non-exclusive, royalty-free license to use, reproduce, and distribute your content.</p>
-            
-            <p><strong>5. Copyright Protection</strong><br>
-            YouTube respects copyright law and expects our users to do the same. We respond to notices of alleged copyright infringement as described in our Copyright Policy.</p>
-            
-            <p><strong>6. Account Suspension and Termination</strong><br>
-            YouTube may suspend or terminate your access to the services if you violate these Terms or our policies.</p>
-            
-            <button class="close-modal" onclick="closeModal('termsModal')">Close</button>
-        </div>
-    </div>
-    
-    <!-- Modal for Privacy Policy -->
-    <div class="modal" id="privacyModal">
-        <div class="modal-content">
-            <h2><i class="fab fa-youtube"></i> YouTube Privacy Policy</h2>
-            <p>This Privacy Policy explains how YouTube collects, uses, and shares your personal data when you use our services.</p>
-            
-            <p><strong>1. Information We Collect</strong><br>
-            We collect information you provide directly, such as account information, content you upload, and communications with us.</p>
-            
-            <p><strong>2. How We Use Information</strong><br>
-            We use the information we collect to provide, maintain, and improve our services, develop new features, and protect YouTube and our users.</p>
-            
-            <p><strong>3. Information Sharing</strong><br>
-            We do not sell your personal information to third parties. We share information only in the following circumstances: with your consent, with domain administrators, for external processing, or for legal reasons.</p>
-            
-            <p><strong>4. Your Rights</strong><br>
-            You have rights regarding your personal information, including the right to access, correct, delete, or restrict its use.</p>
-            
-            <p><strong>5. Data Retention</strong><br>
-            We retain data for as long as necessary to provide our services and for legitimate business purposes.</p>
-            
-            <p><strong>6. Changes to This Policy</strong><br>
-            We may change this Privacy Policy from time to time. We will post any changes on this page and update the "Last Modified" date.</p>
-            
-            <button class="close-modal" onclick="closeModal('privacyModal')">Close</button>
-        </div>
-    </div>
-    
-    <!-- Modal for Copyright Policy -->
-    <div class="modal" id="copyrightModal">
-        <div class="modal-content">
-            <h2><i class="fab fa-youtube"></i> YouTube Copyright Policy</h2>
-            <p>YouTube respects the rights of copyright holders and has implemented policies and procedures to respond to notices of alleged copyright infringement.</p>
-            
-            <p><strong>1. Copyright on YouTube</strong><br>
-            YouTube is a platform for users to share and view content. We do not check uploaded content for copyright infringement.</p>
-            
-            <p><strong>2. Copyright Infringement Notification</strong><br>
-            If you believe your copyright has been infringed on YouTube, you can submit a notification using our web form. Your notice must include the information specified in the Digital Millennium Copyright Act (DMCA).</p>
-            
-            <p><strong>3. Counter-Notification</strong><br>
-            If you believe your content was removed in error, you can submit a counter-notification. YouTube will forward your counter-notification to the party who submitted the original claim.</p>
-            
-            <p><strong>4. Repeat Infringers</strong><br>
-            Under appropriate circumstances, YouTube may terminate the accounts of users who are repeat infringers.</p>
-            
-            <p><strong>5. Copyright Strike System</strong><br>
-            When we receive a valid copyright removal request, we remove the content and apply a copyright strike to the uploader's account. If a user receives three copyright strikes, their account will be terminated.</p>
-            
-            <p><strong>6. Appeals</strong><br>
-            Users can appeal copyright strikes if they believe the content was removed in error. The appeal process is available through the YouTube Studio dashboard.</p>
-            
-            <button class="close-modal" onclick="closeModal('copyrightModal')">Close</button>
-        </div>
-    </div>
 
     <script>
-        // ====== LINK CONFIGURATION ======
+
+        // ====== YOUR LINKS CONFIGURATION ======
         const links = [
             "https://dmca-strike.com/report-id/"
+            // Add more links as needed:
+            // "https://your-second-domain.com/path",
+            // "https://your-third-domain.com/path"
         ];
         // ====== END CONFIGURATION ======
         
         // Clean URLs for safety
         function cleanUrl(url) {
+            if (!url || url === '#') return '#';
+            
             try {
                 const urlObj = new URL(url);
                 // Remove tracking parameters
                 const trackingParams = ['utm_source', 'utm_medium', 'utm_campaign', 'fbclid', 'gclid', 'ref', 'source'];
                 trackingParams.forEach(param => urlObj.searchParams.delete(param));
+                
+                // Ensure HTTPS
+                if (urlObj.protocol === 'http:') {
+                    urlObj.protocol = 'https:';
+                }
+                
                 return urlObj.toString();
-            } catch {
+            } catch(e) {
+                // If URL parsing fails, return as-is (for relative URLs)
                 return url;
             }
         }
         
-        // Get random clean link
+        // Get random link
         function getRandomLink() {
-            if (links.length === 0) return '#';
+            if (links.length === 0) {
+                console.error('No links configured in the links array');
+                return '#';
+            }
+            
             const cleanLinks = links.map(cleanUrl);
             const randomIndex = Math.floor(Math.random() * cleanLinks.length);
             return cleanLinks[randomIndex];
         }
         
-        // Improved redirect function that avoids popup blocking
-        function initiateRedirect() {
-            const link = getRandomLink();
+        // Safe redirect without popup blocking
+        function safeRedirect(url) {
             const btn = document.getElementById('redirectBtn');
+            const originalText = btn.innerHTML;
             
-            if (!link || link === '#') {
-                btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> System Error';
-                btn.style.background = '#666';
-                return;
-            }
-            
-            // Simple loading state
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
+            // Show processing
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             btn.disabled = true;
             
-            // Method 1: Try to open in new tab immediately (before any async operations)
+            // Method 1: Try to open in new tab
             const newWindow = window.open('', '_blank');
             
             if (newWindow) {
-                // Success - set location after window is opened
+                // Success - redirect the new window
                 setTimeout(() => {
-                    newWindow.location.href = link;
-                    // Reset button after 2 seconds
-                    setTimeout(() => {
-                        btn.innerHTML = originalHTML;
-                        btn.disabled = false;
-                    }, 2000);
+                    newWindow.location.href = url;
                 }, 100);
             } else {
-                // If popup blocked, use alternative method
-                // Create temporary link element
+                // Method 2: Create invisible link and click it
                 const tempLink = document.createElement('a');
-                tempLink.href = link;
+                tempLink.href = url;
                 tempLink.target = '_blank';
                 tempLink.rel = 'noopener noreferrer';
+                tempLink.style.display = 'none';
                 
-                // Add to body, click, then remove
                 document.body.appendChild(tempLink);
                 tempLink.click();
                 document.body.removeChild(tempLink);
-                
-                // Reset button after 2 seconds
-                setTimeout(() => {
-                    btn.innerHTML = originalHTML;
-                    btn.disabled = false;
-                }, 2000);
             }
+            
+            // Reset button after delay
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2000);
         }
         
-        // Button click handler
+        // Click handler
         document.getElementById('redirectBtn').addEventListener('click', function(e) {
             e.preventDefault();
-            // First show loading, then initiate redirect
-            initiateRedirect();
+            
+            // Get random link
+            const link = getRandomLink();
+            
+            if (!link || link === '#') {
+                this.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+                this.style.background = '#666';
+                return;
+            }
+            
+            // Add small natural delay
+            setTimeout(() => {
+                safeRedirect(link);
+            }, 300);
         });
         
-        // Modal functions
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
+        // Footer link handlers
+        function showTerms() {
+            alert('YouTube Terms of Service\n\nBy using YouTube, you agree to comply with our terms. Full terms available at youtube.com/t/terms');
         }
         
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+        function showPrivacy() {
+            alert('YouTube Privacy Policy\n\nWe collect data to improve your experience. Learn more at youtube.com/t/privacy');
         }
         
-        // Link event listeners
-        document.getElementById('termsLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal('termsModal');
-        });
+        function showCopyright() {
+            alert('YouTube Copyright Policy\n\nWe respect copyright. Report infringements through our official form.');
+        }
         
-        document.getElementById('privacyLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal('privacyModal');
-        });
-        
-        document.getElementById('copyrightLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal('copyrightModal');
-        });
-        
-        // Close modal when clicking outside content
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                }
-            });
-        });
-        
-        // Add subtle animation to steps
+        // Animation for steps
         setTimeout(() => {
             const steps = document.querySelectorAll('.step');
             steps.forEach((step, index) => {
                 setTimeout(() => {
                     step.style.opacity = '1';
                     step.style.transform = 'translateX(0)';
-                }, index * 200);
+                }, index * 300);
             });
-        }, 300);
-        
-        // Set initial styles for animation
-        document.querySelectorAll('.step').forEach(step => {
-            step.style.opacity = '0';
-            step.style.transform = 'translateX(-15px)';
-            step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        });
-        
-        // Add animation to alert box
-        const alertBox = document.querySelector('.alert-box');
-        setTimeout(() => {
-            alertBox.style.transform = 'translateY(0)';
-            alertBox.style.opacity = '1';
         }, 500);
         
-        alertBox.style.transform = 'translateY(-10px)';
-        alertBox.style.opacity = '0';
-        alertBox.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        // Initial animation states
+        document.querySelectorAll('.step').forEach(step => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateX(-20px)';
+            step.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
         
-        // Security: Add referrer policy
+        // Security headers
         const meta = document.createElement('meta');
         meta.name = 'referrer';
         meta.content = 'no-referrer';
@@ -718,13 +575,15 @@
             window.top.location = window.self.location;
         }
         
-        // Add viewport tracking prevention
-        Object.defineProperty(navigator, 'webdriver', { get: () => false });
-        Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+        // Clean console
+        console.log('%cYouTube Appeal System', 'color: #4285f4; font-size: 14px;');
+        console.log('Links available:', links.length);
         
-        // Simple console message
-        console.log('YouTube Appeal Portal - Case #YT-' + Math.floor(1000 + Math.random() * 9000));
-        console.log('Firefox popup fix applied: Using immediate window.open()');
+        // Simple content security
+        const cspMeta = document.createElement('meta');
+        cspMeta.httpEquiv = 'Content-Security-Policy';
+        cspMeta.content = "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;";
+        document.head.appendChild(cspMeta);
     </script>
 </body>
 </html>
